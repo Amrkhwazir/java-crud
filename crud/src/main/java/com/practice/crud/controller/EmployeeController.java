@@ -3,9 +3,9 @@ package com.practice.crud.controller;
 import com.practice.crud.entity.Employee;
 import com.practice.crud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class EmployeeController {
@@ -18,4 +18,13 @@ public class EmployeeController {
        return employeeService.saveEmployee(employee);
     }
 
+    @GetMapping("/get/employees")
+    public List<Employee> getEmployees(){
+       return employeeService.getEmployees();
+    }
+
+    @GetMapping("/get/employee/{employeeId}")
+    public Employee getEmployeeById(@PathVariable Integer employeeId){
+        return employeeService.getEmployees(employeeId);
+    }
 }
